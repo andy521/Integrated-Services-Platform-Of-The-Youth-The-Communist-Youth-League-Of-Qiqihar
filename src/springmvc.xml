@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xmlns:p="http://www.springframework.org/schema/p"    
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:aop="http://www.springframework.org/schema/aop"    
+    xmlns:context="http://www.springframework.org/schema/context"    
+    xmlns:util="http://www.springframework.org/schema/util"    
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd    
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd    
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd    
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util-3.0.xsd
+    http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd"> 
+     
+
+    <!-- 对web包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
+    <context:component-scan base-package="com.naah.controller"/>
+	<context:component-scan base-package="com.naah.AOP"></context:component-scan>
+	
+	
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<mvc:annotation-driven />  <!-- 支持spring3.0新的mvc注解 -->
+	
+	 <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
+        <property name="cacheSeconds" value="0" />  
+        <property name="messageConverters">  
+            <list> <!-- json转换bean -->
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>  
+            </list>  
+        </property>
+    </bean>  
+
+  
+    <!--对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
+         p:suffix=".jsp" >
+         
+         <!--  p:prefix="/WEB-INF/pages/" -->
+         <!-- 如果使用jstl的话，配置下面的属性 -->
+    	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />    
+    </bean>
+    
+    <!-- 配置静态资源：default-servlet-handler将在SpringMVC上下文中定义DefaultServletHttpRequestHandler, 
+		它会对进入DispatcherServlet的请求进行帅选，如果发现是没有经过映射的请求，就将该请求交由WEB应用服务器默认的 Servlet处理。如果不是静态资源的请求，才由DispatcherServlet继续处理。 -->
+	 <mvc:default-servlet-handler /> 
+
+
+</beans>

@@ -1,0 +1,16 @@
+0.录入
+1.待审
+2.已审
+3.驳回
+4.显示
+
+
+01区县
+02街道
+09市级
+
+@JsonIgnoreProperties(value = { "youthlawhelptablesForAreaId", "usersesForCity", "singleyouthtablesForCountyId", "usersesForCounty",
+		"wishtablesForAreaId", "youthworktablesForAreaId", "youthworktablesForCountyId", "youthmentalitytablesForAreaId",
+		"onetoonetablesForCountyId", "illnesshelptablesForCountyId", "onetoonetablesForAreaId", "illnesshelptablesForAreaId",
+		"donatepersontablesForCityId", "singleyouthtablesForAreaId", "youthlawhelptablesForCountyId", "youthmentalitytablesForCountyId",
+		"donatepersontablesForCountyId", "wishtablesForCountyId", "universitytablesForAreaId", "universitytablesForCountyId" })
