@@ -12,6 +12,12 @@ http://tsw.eqqhr.com:8080
 
 数据库采用MySql
 
+数据库结构未上传，如有需要，请联系我
+
+Email：nayan3480232@163.com
+
+Wechat：278567949
+
 # 模块说明
 1.系统设置
 
